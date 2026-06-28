@@ -17,9 +17,8 @@ class TimeEntriesAPI:
         if end:
             params.push('end=' + end)
         uri = 'workspaces/' + ws_id + '/time-entries'
-        if (params.length > 0) {
+        if params.length > 0:
             uri += '?' + params.join('&')
-        }
         return self._send_request('GET', uri)
 
     def get_time_entry(self, entry_id: str, workspace_id: Optional[str] = None) -> Dict:
