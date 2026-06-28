@@ -17,7 +17,32 @@ A Model Context Protocol (MCP) server for Clockify that allows interaction with 
 - **Time Tracking**: Start/stop timers, log time manually, and manage time entries.
 - **Full MCP Support**: Standardized protocol for use with any MCP client (Claude Desktop, Cursor, Windsurf, etc.).
 
-## Quick Start (Local Setup)
+## 🚀 Quick Start (Hosted)
+
+The fastest way to use Clockify MCP is through our hosted instance at `https://kyzu-clockify-mcp.fastmcp.app/mcp`.
+
+Add it to your favorite AI tools using these commands:
+
+### Codex CLI
+```bash
+codex mcp add --url https://kyzu-clockify-mcp.fastmcp.app/mcp kyzu-clockify
+```
+
+### Claude CLI
+```bash
+claude mcp add --scope local --transport http kyzu-clockify https://kyzu-clockify-mcp.fastmcp.app/mcp
+```
+
+### Gemini CLI
+```bash
+gemini mcp add kyzu-clockify https://kyzu-clockify-mcp.fastmcp.app/mcp --transport http
+```
+
+---
+
+## 🛠️ Local Setup (Self-Hosted)
+
+If you prefer to run the server locally for development or private use.
 
 ### 1. Prerequisites
 - [uv](https://github.com/astral-sh/uv) installed on your system.
@@ -25,7 +50,7 @@ A Model Context Protocol (MCP) server for Clockify that allows interaction with 
 
 ### 2. Installation
 ```bash
-git clone https://github.com/yourusername/clockify-mcp.git
+git clone https://github.com/antuking/clockify-mcp.git
 cd clockify-mcp
 uv sync
 ```
@@ -79,6 +104,14 @@ codex mcp add clockify_mcp \
     "CLOCKIFY_WORKSPACE_ID": "your-workspace-id"
   }
 }
+```
+
+#### Gemini CLI
+```bash
+gemini mcp add clockify \
+  --env CLOCKIFY_API_KEY=<CLOCKIFY_API_KEY> \
+  --env CLOCKIFY_WORKSPACE_ID=<CLOCKIFY_WORKSPACE_ID> \
+  -- uv --directory <REPO_PATH> run clockify-mcp
 ```
 
 ## API Coverage
